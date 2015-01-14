@@ -77,3 +77,18 @@ def get_partitions(tree, space, node_idx=0):
     r_part = get_partitions(tree, right_space, right_child)
 
     return l_part + r_part
+
+
+def get_configuration_space(x):
+    space = np.vstack((np.min(x, 0), np.max(x, 0))).T
+    assert np.all(space[:, 0] != space[:, 1])
+    return space
+
+
+def divide_global_space(configuration_space, tree):
+    global_space = [{low, high} for low, high in configuration_space]
+    for i in range(len(tree.feature)):
+        feature = tree.feature[i]
+        if feature >= 0:
+            global_space[feature].add(tree.threshold[i])
+    return [sorted(s) for s in global_space]
