@@ -92,3 +92,8 @@ def divide_global_space(configuration_space, tree):
         if feature >= 0:
             global_space[feature].add(tree.threshold[i])
     return [sorted(s) for s in global_space]
+
+
+def is_in_space(dim_idxs, dim_values, space):
+    return np.all((space[dim_idxs, 0:1] - dim_values <= 0) *
+                  (space[dim_idxs, 1:2] - dim_values > 0), axis=0)
