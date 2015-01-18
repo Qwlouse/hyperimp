@@ -41,9 +41,9 @@ class MarginalizingFunction(object):
 
 
 class MarginalizeOverDimsFunction(object):
-    def __init__(self, conf_space, tree, dim_idxs):
+    def __init__(self, conf_space, partitions, dim_idxs):
         self.space = conf_space
-        self.partitions = get_partitions(tree, self.space)
+        self.partitions = partitions
         self.dim_idxs = dim_idxs
 
         size_of_theta_u = range_size(self.space, without=dim_idxs)
