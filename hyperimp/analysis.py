@@ -32,7 +32,8 @@ def analyse(params, perf, K=1, param_names=None, n_trees=100):
 
     result = {
         'marginals': {},
-        'avg_stds': {}
+        'avg_stds': {},
+        'all_margs': {}
     }
 
     margs = np.array(var_fracs)
