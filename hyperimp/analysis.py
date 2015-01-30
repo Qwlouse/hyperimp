@@ -54,6 +54,7 @@ def analyse(params, perf, K=1, param_names=None, n_trees=100):
             f_u = MarginalizeOverDimsFunction(configuration_space, part, [u])
             margs.append(f_u.get_marginal([X]).flatten())
         result['avg_stds'][name] = X, np.mean(margs, 0), np.std(margs, 0)
+        result['all_margs'][name] = X, margs
 
     return result
 
